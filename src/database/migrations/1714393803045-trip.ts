@@ -40,8 +40,8 @@ export class Trip1714393803045 implements MigrationInterface {
           {
             name: "trip_date",
             type: "timestamp",
-            default: "now()",
-            onUpdate: "now()",
+            default: "CURRENT_TIMESTAMP",
+            onUpdate: "CURRENT_TIMESTAMP",
           },
           {
             name: "trip_start_date",
@@ -57,7 +57,7 @@ export class Trip1714393803045 implements MigrationInterface {
         foreignKeys: [
           {
             columnNames: ["user_id"],
-            referencedTableName: "user",
+            referencedTableName: "users",
             referencedColumnNames: ["id"],
             onDelete: "CASCADE",
           },

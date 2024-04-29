@@ -21,7 +21,7 @@ export class Drivers1714392337856 implements MigrationInterface {
           {
             name: "email",
             type: "varchar",
-            length: "255",
+            length: "100",
             isNullable: false,
             isUnique: true,
           },
@@ -38,7 +38,8 @@ export class Drivers1714392337856 implements MigrationInterface {
           },
           {
             name: "phone",
-            type: "int",
+            type: "varchar",
+            length: "30",
             isNullable: true,
           },
           {
@@ -60,14 +61,15 @@ export class Drivers1714392337856 implements MigrationInterface {
           },
           {
             name: "location",
-            type: "number",
+            type: "varchar",
+            length: "100",
             isNullable: true,
           },
           {
             name: "created_at",
             type: "timestamp",
-            default: "now()",
-            onUpdate: "now()",
+            default: "CURRENT_TIMESTAMP",
+            onUpdate: "CURRENT_TIMESTAMP",
           },
         ],
         foreignKeys: [

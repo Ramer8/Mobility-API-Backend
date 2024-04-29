@@ -3,8 +3,8 @@ import "reflect-metadata"
 import { DataSource } from "typeorm"
 
 //Migrations
-import { Brand1714388985529 } from "./migrations/1714388985529-brand"
-import { Cars1714389965601 } from "./migrations/1714389965601-cars"
+import { Brand1714389965600 } from "./migrations/1714389965600-brand"
+import { Cars1714389965602 } from "./migrations/1714389965602-cars"
 import { Roles1714392254828 } from "./migrations/1714392254828-roles"
 import { Drivers1714392337856 } from "./migrations/1714392337856-drivers"
 import { Users1714393281890 } from "./migrations/1714393281890-users"
@@ -18,8 +18,8 @@ export const AppDataSource = new DataSource({
   password: process.env.DB_PASSWORD || "",
   database: process.env.DB_DATABASE || "",
   migrations: [
-    Brand1714388985529,
-    Cars1714389965601,
+    Brand1714389965600,
+    Cars1714389965602,
     Roles1714392254828,
     Drivers1714392337856,
     Users1714393281890,

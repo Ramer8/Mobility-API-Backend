@@ -26,7 +26,7 @@ export class Drivers1714392337856 implements MigrationInterface {
             isUnique: true,
           },
           {
-            name: "password_hash",
+            name: "password",
             type: "varchar",
             length: "255",
             isNullable: false,

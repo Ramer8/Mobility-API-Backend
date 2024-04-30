@@ -46,7 +46,7 @@ export class Cars1714389965602 implements MigrationInterface {
         foreignKeys: [
           {
             columnNames: ["brand_id"],
-            referencedTableName: "brand",
+            referencedTableName: "brands",
             referencedColumnNames: ["id"],
             onDelete: "CASCADE",
           },

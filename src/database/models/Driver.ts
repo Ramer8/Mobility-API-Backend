@@ -10,8 +10,8 @@ import {
 import { Role } from "./Role"
 import { Trip } from "./Trip"
 
-@Entity("users")
-export class User extends BaseEntity {
+@Entity("drivers")
+export class Driver extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number
 
@@ -24,28 +24,20 @@ export class User extends BaseEntity {
   @Column({ name: "password" })
   password!: string
 
+  @Column({ name: "role_id" })
+  roleId!: number
+
   @Column({ name: "phone" })
   phone!: number
-
-  @Column({ name: "payment" })
-  payment!: string
-  @Column({ name: "address" })
-  address!: string
-
-  @Column({ name: "work_address" })
-  workAddress!: string
-
-  @Column({ name: "saved_address" })
-  savedAddress!: string
 
   @Column({ name: "documents" })
   documents!: string
 
+  @Column({ name: "score" })
+  score!: number
+
   @Column({ name: "message" })
   message!: string
-
-  @Column({ name: "role_id" })
-  roleId!: number
 
   @Column({ name: "location" })
   location!: string
@@ -53,11 +45,11 @@ export class User extends BaseEntity {
   @Column({ name: "created_at" })
   createdAt!: Date
 
-  @ManyToOne(() => Role, (role) => role.users)
+  @ManyToOne(() => Role, (role) => role.drivers)
   @JoinColumn({ name: "role_id" })
   role!: Role
   ///
-  @OneToMany(() => Trip, (trip) => trip.user)
+  @OneToMany(() => Trip, (trip) => trip.driver)
   trips!: Trip[]
   //added this relation to trip and more
 }

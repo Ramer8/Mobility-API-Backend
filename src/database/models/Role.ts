@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm"
 import { User } from "./User"
+import { Driver } from "./Driver"
 
 @Entity("roles")
 export class Role extends BaseEntity {
@@ -17,6 +18,7 @@ export class Role extends BaseEntity {
 
   @OneToMany(() => User, (user) => user.role)
   users!: User[]
-  //   @OneToMany(() => User, (user) => user.role)
-  //   users!: User[] //add this relation to driver model
+
+  @OneToMany(() => Driver, (driver) => driver.role)
+  drivers!: Driver[] //add this relation to driver model
 }

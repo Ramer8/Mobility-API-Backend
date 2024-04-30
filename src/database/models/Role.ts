@@ -20,5 +20,5 @@ export class Role extends BaseEntity {
   users!: User[]
 
   @OneToMany(() => Driver, (driver) => driver.role)
-  drivers!: Driver[] //add this relation to driver model
+  drivers!: Driver[]
 }

@@ -21,5 +21,3 @@ export class Brand extends BaseEntity {
   @OneToMany(() => Car, (car) => car.brand)
   cars!: Car[]
 }
-
-///

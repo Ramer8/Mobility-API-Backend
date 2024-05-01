@@ -25,7 +25,7 @@ export class User extends BaseEntity {
   password!: string
 
   @Column({ name: "phone" })
-  phone!: number
+  phone!: string
 
   @Column({ name: "payment" })
   payment!: string

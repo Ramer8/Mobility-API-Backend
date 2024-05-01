@@ -15,8 +15,8 @@ export class Driver extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @Column({ name: "user_name" })
-  userName!: string
+  @Column({ name: "driver_name" })
+  driverName!: string
 
   @Column({ name: "email" })
   email!: string
@@ -28,7 +28,7 @@ export class Driver extends BaseEntity {
   roleId!: number
 
   @Column({ name: "phone" })
-  phone!: number
+  phone!: string
 
   @Column({ name: "documents" })
   documents!: string
@@ -36,8 +36,8 @@ export class Driver extends BaseEntity {
   @Column({ name: "score" })
   score!: number
 
-  @Column({ name: "message" })
-  message!: string
+  @Column({ name: "driver_message" })
+  driverMessage!: string
 
   @Column({ name: "location" })
   location!: string

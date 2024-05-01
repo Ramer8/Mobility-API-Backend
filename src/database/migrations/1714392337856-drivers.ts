@@ -14,7 +14,7 @@ export class Drivers1714392337856 implements MigrationInterface {
             generationStrategy: "increment",
           },
           {
-            name: "user_name",
+            name: "driver_name",
             type: "varchar",
             length: "255",
           },
@@ -54,7 +54,7 @@ export class Drivers1714392337856 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: "message",
+            name: "driver_message",
             type: "varchar",
             length: "255",
             isNullable: true,

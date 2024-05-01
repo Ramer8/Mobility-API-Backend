@@ -17,11 +17,13 @@ export class Brands1714389965600 implements MigrationInterface {
             name: "name",
             type: "varchar",
             length: "100",
+            isNullable: true,
           },
           {
             name: "nationality",
             type: "varchar",
             length: "100",
+            isNullable: true,
           },
         ],
       }),

@@ -4,6 +4,8 @@ import bcrypt from "bcrypt"
 import { Role } from "../models/Role"
 import { User } from "../models/User"
 import { Driver } from "../models/Driver"
+import { Car } from "../models/Car"
+import { Brand } from "../models/Brand"
 
 const roleSeedDatabase = async () => {
   try {
@@ -35,6 +37,7 @@ const roleSeedDatabase = async () => {
 //number of fake users we want to populate DB with
 let num_users = 20
 let num_drivers = 5
+let num_cars = 6
 let fakeName
 // create false users to populate DB (with Faker)
 const generateFakeUsers = () => {
@@ -43,6 +46,8 @@ const generateFakeUsers = () => {
   user.userName = fakeName
   user.email = fakeName + "@gmail.com"
   user.phone = faker.phone.number()
+  const randomNumber = Math.random()
+  user.payment = randomNumber < 0.5 ? "debit" : "credit"
   //
 
   // Hardcode a hashed password
@@ -93,6 +98,7 @@ const userSeedDatabase = async () => {
     }
   }
 }
+// Generate Fake Drivers
 
 const generateFakeDrivers = () => {
   const driver = new Driver()
@@ -100,9 +106,6 @@ const generateFakeDrivers = () => {
   driver.driverName = fakeName
   driver.email = fakeName + "@gmail.com"
   driver.phone = faker.phone.number()
-
-  // Hardcode a hashed password
-  // user.password = "$2b$08$Rj.Etm9wcVccDkV6jM8kM.fUFNgDDHO0fHCNWcKuGWcA4lZpXPsMO" // 123456
   driver.password = bcrypt.hashSync(`123456`, 8)
   // user.password = bcrypt.hashSync(`${fakeName}`, 8)
   driver.role = new Role()
@@ -133,12 +136,68 @@ const driverSeedDatabase = async () => {
     admin.role.id = 2
     admin.save()
 
-    // Fake users (with role_id = 1 by default)
+    // Fake drivers (with role_id = 1 by default)
     const fakeDrivers = Array.from({ length: num_drivers }, generateFakeDrivers)
     await Driver.save(fakeDrivers)
 
     console.log("-----------------------------")
     console.log("---Drivers saved correctly---")
+    console.log("-----------------------------")
+  } catch (error) {
+    console.log(error)
+  } finally {
+    if (AppDataSource) {
+      await AppDataSource.destroy()
+    }
+  }
+}
+
+const generateFakeBrands = () => {
+  const brand = new Brand()
+  brand.name = faker.vehicle.manufacturer()
+  return brand
+}
+const brandSeedDatabase = async () => {
+  try {
+    await AppDataSource.initialize()
+
+    const fakeBrand = Array.from({ length: num_cars }, generateFakeBrands)
+    await Brand.save(fakeBrand)
+
+    console.log("--------------------------------")
+    console.log("----Brands saved correctly------")
+    console.log("--------------------------------")
+  } catch (error) {
+    console.log(error)
+  } finally {
+    if (AppDataSource) {
+      await AppDataSource.destroy()
+    }
+  }
+}
+
+const generateFakeCars = () => {
+  const car = new Car()
+  faker.vehicle.vehicle()
+  car.model = faker.vehicle.vehicle()
+  car.powerEngine = faker.vehicle.fuel()
+
+  const randomNumber = Math.random()
+  car.seats = randomNumber < 0.5 ? 4 : 6
+  car.accessibleCar = car.seats === 6 ? true : false
+  car.numberPlate = faker.vehicle.vrm()
+
+  return car
+}
+const carSeedDatabase = async () => {
+  try {
+    await AppDataSource.initialize()
+
+    const fakeCars = Array.from({ length: num_cars }, generateFakeCars)
+    await Car.save(fakeCars)
+
+    console.log("-----------------------------")
+    console.log("----Cars saved correctly-----")
     console.log("-----------------------------")
   } catch (error) {
     console.log(error)
@@ -255,8 +314,8 @@ const startSeeders = async () => {
   await roleSeedDatabase()
   await userSeedDatabase()
   await driverSeedDatabase()
-  //   await serviceSeedDatabase()
-  //   await appointmentSeedDatabase()
+  await brandSeedDatabase()
+  await carSeedDatabase()
 }
 
 startSeeders()

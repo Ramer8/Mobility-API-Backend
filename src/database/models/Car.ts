@@ -10,10 +10,13 @@ import {
 import { Brand } from "./Brand"
 import { Trip } from "./Trip"
 
-@Entity("Cars")
+@Entity("cars")
 export class Car extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number
+
+  @Column({ name: "number_plate" })
+  numberPlate!: string
 
   @Column({ name: "model" })
   model!: string
@@ -22,10 +25,10 @@ export class Car extends BaseEntity {
   powerEngine!: string
 
   @Column({ name: "seats" })
-  seats!: string
+  seats!: number
 
   @Column({ name: "accessible_car" })
-  accessibleCar!: string
+  accessibleCar!: boolean
 
   @Column({ name: "created_at" })
   created_at!: string

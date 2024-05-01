@@ -29,6 +29,7 @@ export class User extends BaseEntity {
 
   @Column({ name: "payment" })
   payment!: string
+
   @Column({ name: "address" })
   address!: string
 

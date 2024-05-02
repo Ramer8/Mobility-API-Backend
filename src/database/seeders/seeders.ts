@@ -126,16 +126,6 @@ const driverSeedDatabase = async () => {
     superadmin.role.id = 3
     superadmin.save()
 
-    // Hardcoded admin
-    const admin = new Driver()
-    admin.driverName = "Admin"
-    admin.email = "admin@admin.com"
-    admin.password =
-      "$2b$08$Rj.Etm9wcVccDkV6jM8kM.fUFNgDDHO0fHCNWcKuGWcA4lZpXPsMO" // 123456
-    admin.role = new Role()
-    admin.role.id = 2
-    admin.save()
-
     // Fake drivers (with role_id = 1 by default)
     const fakeDrivers = Array.from({ length: num_drivers }, generateFakeDrivers)
     await Driver.save(fakeDrivers)

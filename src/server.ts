@@ -1,30 +1,21 @@
-import express from "express"
-import dotenv from "dotenv"
-import { Request, Response } from "express"
+import "dotenv/config"
 
-// links the .env folder
-dotenv.config()
+import { app } from "./app"
+import { AppDataSource } from "./database/db"
 
-// runs server connection
-const app = express()
+const PORT = process.env.PORT || 5500
 
-// parses responses to .json)
-app.use(express.json())
+const startServer = () => {
+  AppDataSource.initialize()
+    .then(() => {
+      console.log("database connected")
+      app.listen(PORT, () => {
+        console.log(`Server is running on port: ${PORT}`)
+      })
+    })
+    .catch((error: any) => {
+      console.log("error")
+    })
+}
 
-// sets up the connection port
-const PORT = process.env.PORT || 4002
-
-// server is up and listening to any upcomming request
-app.listen(5500, () => console.log("Servidor online at port 5500"))
-
-// testing request - 'Hello world' means we are ready to go!
-app.get("/", (req: Request, res: Response) => {
-  res.send("Server is alive")
-})
-
-app.get("/healthy", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "Server is healthy",
-  })
-})
+startServer()

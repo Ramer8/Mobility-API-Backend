@@ -42,14 +42,14 @@ export const registerUser = async (req: Request, res: Response) => {
       email: reqMail,
       password: cryptedPass,
       role: {
-        id: 1, //Problem solved, role id =2, by default now the role is 1 ,  "user" . No more is  role id =2, "admin"
+        id: 1,
       },
     }).save()
     const { password, ...newUserRegistered } = newUser
     return res.status(201).json({
       success: true,
       message: "User registered into Data Base successfully",
-      data: newUserRegistered, //Solved problem "show password" , already not show password hash.
+      data: newUserRegistered,
     })
   } catch (error) {
     return res.status(500).json({
@@ -61,8 +61,10 @@ export const registerUser = async (req: Request, res: Response) => {
 }
 export const loginUser = async (req: Request, res: Response) => {
   try {
-    const { email, passwordBody } = req.body
-    if (!email || !passwordBody) {
+    // const { email, password } = req.body
+    const email = req.body.email
+    const pass = req.body.password
+    if (!email || !pass) {
       return res.status(400).json({
         success: false,
         message: "Email and password are needed",
@@ -82,7 +84,7 @@ export const loginUser = async (req: Request, res: Response) => {
         message: "Email o password invalid",
       })
     }
-    const isValidPassword = bcrypt.compareSync(passwordBody, user.password)
+    const isValidPassword = bcrypt.compareSync(pass, user.password)
     if (!isValidPassword) {
       return res.status(400).json({
         success: false,

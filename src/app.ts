@@ -3,6 +3,7 @@ import cors from "cors"
 
 import { authRouter } from "./routes/authRoutes"
 import { userRouter } from "./routes/userRoutes"
+import { driverRouter } from "./routes/driverRoutes"
 
 export const app = express()
 app.use(express.json())
@@ -23,3 +24,6 @@ app.use("/", authRouter)
 
 // Users
 app.use("/", userRouter)
+
+// Drivers
+app.use("/", driverRouter)

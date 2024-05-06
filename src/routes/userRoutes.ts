@@ -7,7 +7,6 @@ import {
 
 export const userRouter = Router()
 
-// Profile
-// authRouter.post("/profile", auth, getUserProfile)
+// Users Profile
 userRouter.get("/users/profile", auth, getUserProfile)
 userRouter.put("/users/profile", auth, updateUserProfile)

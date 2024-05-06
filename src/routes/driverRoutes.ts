@@ -2,6 +2,7 @@ import { Router } from "express"
 import { auth } from "../middlewares/auth"
 import {
   deleteDriverById,
+  deleteMoreThanOneDrivers,
   getDriverProfile,
   getDrivers,
   updateDriverProfile,
@@ -20,4 +21,4 @@ driverRouter.get("/drivers", auth, getDrivers)
 
 // Super Admin Driver Routes
 driverRouter.delete("/drivers/:id", auth, isSuperAdmin, deleteDriverById)
-// driverRouter.delete("/drivers/", auth, isSuperAdmin, deleteMoreThanOneDrivers)
+driverRouter.delete("/drivers/", auth, isSuperAdmin, deleteMoreThanOneDrivers)

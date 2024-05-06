@@ -118,7 +118,7 @@ export const deleteDriverById = async (req: Request, res: Response) => {
       })
     }
 
-    if (driverToRemove.roleId === 3 || driverToRemove.roleId === 2) {
+    if (driverToRemove.roleId === 3) {
       return res.status(403).json({
         success: false,
         message: "This driver can't be deleted",
@@ -147,49 +147,46 @@ export const deleteDriverById = async (req: Request, res: Response) => {
     })
   }
 }
-// export const deleteMoreThanOneDrivers = async (req: Request, res: Response) => {
-//   try {
-//     const usersId = req.body.usersId
-//     const usersToRemove: any[] = await User.createQueryBuilder("user")
-//       .select([
-//         "user.id",
-//         "user.userName",
-//         "user.email",
-//         "user.createdAt",
-//         "user.roleId",
-//       ])
-//       .where("user.id IN (:...usersId)", { usersId })
-//       .getMany()
+export const deleteMoreThanOneDrivers = async (req: Request, res: Response) => {
+  try {
+    const driversId = req.body.driversId
+    const driversToRemove: any[] = await Driver.createQueryBuilder("driver")
+      .select([
+        "driver.id",
+        "driver.driverName",
+        "driver.email",
+        "driver.createdAt",
+        "driver.roleId",
+      ])
+      .where("driver.id IN (:...driversId)", { driversId })
+      .getMany()
+    const isSuperAdmin = driversToRemove.find((drivers) => drivers.roleId === 3)
+    if (isSuperAdmin) {
+      return res.status(500).json({
+        success: false,
+        message: "One of this drivers can't be deleted",
+      })
+    }
+    if (!driversToRemove.length) {
+      return res.status(404).json({
+        success: false,
+        message: "Driver/s can't be deleted because not exist in Data Base",
+      })
+    }
 
-//     const isSuperAdmin = usersToRemove.find(
-//       (users) => users.roleId === 3 || users.roleId === 2
-//     )
-//     if (isSuperAdmin) {
-//       return res.status(500).json({
-//         success: false,
-//         message: "One of this users can't be deleted",
-//       })
-//     }
-//     if (!usersToRemove.length) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "User/s can't be deleted because not exist in Data Base",
-//       })
-//     }
+    const driverDeleted = await Driver.delete(driversToRemove)
 
-//     const userDeleted = await User.delete(usersToRemove)
-
-//     res.status(200).json({
-//       success: true,
-//       message: "user/s deleted successfully",
-//       data: userDeleted,
-//       usersToRemove,
-//     })
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       message: "User/s can't be deleted",
-//       error: error,
-//     })
-//   }
-// }
+    res.status(200).json({
+      success: true,
+      message: "Driver/s deleted successfully",
+      data: driverDeleted,
+      driversToRemove,
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Driver/s can't be deleted",
+      error: error,
+    })
+  }
+}

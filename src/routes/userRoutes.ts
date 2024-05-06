@@ -6,11 +6,12 @@ import {
   getUserProfile,
   updateUserProfile,
 } from "../controllers/userController"
+import { isSuperAdmin } from "../middlewares/isSuperAdmin"
 
 export const userRouter = Router()
 
 // Users Profile
 userRouter.get("/users/profile", auth, getUserProfile)
 userRouter.put("/users/profile", auth, updateUserProfile)
-userRouter.delete("/users/:id", auth, deleteUserById)
-userRouter.delete("/users/", auth, deleteMoreThanOneUsers)
+userRouter.delete("/users/:id", auth, isSuperAdmin, deleteUserById)
+userRouter.delete("/users/", auth, isSuperAdmin, deleteMoreThanOneUsers)

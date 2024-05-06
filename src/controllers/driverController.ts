@@ -42,26 +42,34 @@ export const getDriverProfile = async (req: Request, res: Response) => {
 }
 export const updateDriverProfile = async (req: Request, res: Response) => {
   try {
-    const userId = req.tokenData.userId
+    const driverId = req.tokenData.driverId
     const driverUpdated = await Driver.update(
       {
-        id: userId,
+        id: driverId,
       },
       {
-        driverName: req.body.userName,
+        driverName: req.body.driverName,
         phone: req.body.phone,
-        // payment: req.body.payment,
-        // address: req.body.address,
+        documents: req.body.documents,
+        location: req.body.location,
+        driverMessage: req.body.driverMessage,
+        score: req.body.score,
       }
     )
-    console.log(driverUpdated)
+    if (!driverUpdated.affected) {
+      return res.status(404).json({
+        success: false,
+        message: "Driver profile can't updated",
+      })
+    }
     res.status(200).json({
       success: true,
-      message: "Driver updated ",
+      message: "Driver updated successfully",
       driverNameUpdated: req.body.driverName,
       phoneUpdated: req.body.phone,
-      //   paymentUpdated: req.body.payment,
-      //   addressUpdated: req.body.address,
+      scoreUpdated: req.body.score,
+      driverMessageUpdated: req.body.driverMessage,
+      driver: driverUpdated,
     })
   } catch (error) {
     res.status(500).json({

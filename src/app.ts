@@ -1,7 +1,6 @@
 import express from "express"
 import cors from "cors"
 
-// import { roleRouter } from "./routes/roleRoutes"
 import { authRouter } from "./routes/authRoutes"
 import { userRouter } from "./routes/userRoutes"
 
@@ -19,6 +18,8 @@ app.get("/healthy", (req, res) => {
   })
 })
 
-// app.use("/", roleRouter)
+// auth Users & Drivers
 app.use("/", authRouter)
+
+// Users
 app.use("/", userRouter)

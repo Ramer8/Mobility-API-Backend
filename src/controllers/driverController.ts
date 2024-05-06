@@ -79,3 +79,25 @@ export const updateDriverProfile = async (req: Request, res: Response) => {
     })
   }
 }
+
+export const getDrivers = async (req: Request, res: Response) => {
+  try {
+    const drivers = await Driver.find({
+      order: {
+        driverName: "ASC",
+      },
+    })
+
+    res.status(200).json({
+      success: true,
+      message: "user retriever successfully",
+      data: drivers,
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "user can't be retriever successfully",
+      error: error,
+    })
+  }
+}

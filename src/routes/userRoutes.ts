@@ -1,6 +1,7 @@
 import { Router } from "express"
 import { auth } from "../middlewares/auth"
 import {
+  deleteMoreThanOneUsers,
   deleteUserById,
   getUserProfile,
   updateUserProfile,
@@ -12,3 +13,4 @@ export const userRouter = Router()
 userRouter.get("/users/profile", auth, getUserProfile)
 userRouter.put("/users/profile", auth, updateUserProfile)
 userRouter.delete("/users/:id", auth, deleteUserById)
+userRouter.delete("/users/", auth, deleteMoreThanOneUsers)

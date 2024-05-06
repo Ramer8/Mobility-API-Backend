@@ -109,50 +109,49 @@ export const deleteUserById = async (req: Request, res: Response) => {
     })
   }
 }
-// export const deleteMoreThanOneUsers = async (req: Request, res: Response) => {
-//   try {
-//     const usersId = req.body.usersId
-//     const usersToRemove: any[] = await User.createQueryBuilder("user")
-//       .select([
-//         "user.id",
-//         "user.firstName",
-//         "user.lastName",
-//         "user.email",
-//         "user.createdAt",
-//         "user.roleId",
-//       ])
-//       .where("user.id IN (:...usersId)", { usersId })
-//       .getMany()
+export const deleteMoreThanOneUsers = async (req: Request, res: Response) => {
+  try {
+    const usersId = req.body.usersId
+    const usersToRemove: any[] = await User.createQueryBuilder("user")
+      .select([
+        "user.id",
+        "user.userName",
+        "user.email",
+        "user.createdAt",
+        "user.roleId",
+      ])
+      .where("user.id IN (:...usersId)", { usersId })
+      .getMany()
 
-//     const isSuperAdmin = usersToRemove.find(
-//       (users) => users.roleId === 3 || users.roleId === 2
-//     )
-//     if (isSuperAdmin) {
-//       return res.status(500).json({
-//         success: false,
-//         message: "One of this users can't be deleted",
-//       })
-//     }
-//     if (!usersToRemove.length) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "User/s can't be deleted because not exist in Data Base",
-//       })
-//     }
+    const isSuperAdmin = usersToRemove.find(
+      (users) => users.roleId === 3 || users.roleId === 2
+    )
+    if (isSuperAdmin) {
+      return res.status(500).json({
+        success: false,
+        message: "One of this users can't be deleted",
+      })
+    }
+    if (!usersToRemove.length) {
+      return res.status(404).json({
+        success: false,
+        message: "User/s can't be deleted because not exist in Data Base",
+      })
+    }
 
-//     const userDeleted = await User.delete(usersToRemove)
+    const userDeleted = await User.delete(usersToRemove)
 
-//     res.status(200).json({
-//       success: true,
-//       message: "user/s deleted successfully",
-//       data: userDeleted,
-//       usersToRemove,
-//     })
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       message: "User/s can't be deleted",
-//       error: error,
-//     })
-//   }
-// }
+    res.status(200).json({
+      success: true,
+      message: "user/s deleted successfully",
+      data: userDeleted,
+      usersToRemove,
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "User/s can't be deleted",
+      error: error,
+    })
+  }
+}

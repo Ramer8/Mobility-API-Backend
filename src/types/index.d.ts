@@ -1,4 +1,5 @@
 export type TokenData = {
+  driverId: number
   userId: number
   roleName: string
 }

@@ -1,5 +1,6 @@
 import { Router } from "express"
 import {
+  loginDriver,
   loginUser,
   registerDriver,
   registerUser,
@@ -12,4 +13,4 @@ authRouter.post("/auth/register", registerUser)
 authRouter.post("/auth/login", loginUser)
 // Driver Authorization
 authRouter.post("/auth/drivers/register", registerDriver)
-// authRouter.post("/auth/drivers/login", loginDriver)
+authRouter.post("/auth/drivers/login", loginDriver)

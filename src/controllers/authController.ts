@@ -179,7 +179,6 @@ export const registerDriver = async (req: Request, res: Response) => {
 export const loginDriver = async (req: Request, res: Response) => {
   try {
     const { email } = req.body
-    // const email = req.body.email
     const pass = req.body.password
     if (!email || !pass) {
       return res.status(400).json({

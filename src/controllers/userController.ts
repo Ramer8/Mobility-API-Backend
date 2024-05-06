@@ -81,12 +81,7 @@ export const deleteUserById = async (req: Request, res: Response) => {
       where: { id: parseInt(userId) },
       select: ["id", "userName", "email", "createdAt", "roleId"],
     })
-    if (userToRemove.roleId === 3 || userToRemove.roleId === 2) {
-      return res.status(500).json({
-        success: false,
-        message: "This user can't be deleted",
-      })
-    }
+
     if (!userToRemove) {
       return res.status(404).json({
         success: false,
@@ -94,8 +89,21 @@ export const deleteUserById = async (req: Request, res: Response) => {
       })
     }
 
+    if (userToRemove.roleId === 3 || userToRemove.roleId === 2) {
+      return res.status(500).json({
+        success: false,
+        message: "This user can't be deleted",
+      })
+    }
+
     const userDeleted = await User.delete(userToRemove)
 
+    if (!userDeleted.affected) {
+      return res.status(404).json({
+        success: false,
+        message: "User can't be deleted",
+      })
+    }
     res.status(200).json({
       success: true,
       message: "user deleted successfully",

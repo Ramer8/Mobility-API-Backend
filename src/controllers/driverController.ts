@@ -130,7 +130,7 @@ export const deleteDriverById = async (req: Request, res: Response) => {
     if (!driverDeleted.affected) {
       return res.status(404).json({
         success: false,
-        message: "Driver can't be deleted because not exist in Data Base",
+        message: "Driver can't be deleted",
       })
     }
 

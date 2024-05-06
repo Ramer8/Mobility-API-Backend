@@ -48,6 +48,6 @@ export class Trip extends BaseEntity {
   user!: User
 
   @ManyToOne(() => Car, (car) => car.trips)
-  @JoinColumn({ name: "Car_id" })
+  @JoinColumn({ name: "car_id" })
   car!: Car
 }

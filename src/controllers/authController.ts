@@ -101,7 +101,7 @@ export const loginUser = async (req: Request, res: Response) => {
       },
       process.env.JWT_SECRET as string,
       {
-        expiresIn: "2h",
+        expiresIn: "20h",
       }
     )
     const { password, roleId, ...userLogged } = user

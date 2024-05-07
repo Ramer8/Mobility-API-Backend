@@ -164,36 +164,27 @@ export const showMyTripsWithToken = async (req: Request, res: Response) => {
 // }
 
 export const deleteTripById = async (req: Request, res: Response) => {
-  //no borra la funcion, revisar
   try {
     const userId = req.tokenData.userId
-    console.log(userId)
-    console.log(parseInt(req.params.id))
 
     const tripToRemove: any = await Trip.findOneBy({
       userId: userId,
       id: parseInt(req.params.id),
     })
+
     if (!tripToRemove) {
       return res.status(404).json({
         success: false,
         message: "trip can't be deleted because not exist in Data Base",
       })
     }
-    console.log(tripToRemove, "fdsagfadgdfa")
 
-    const tripDeleted = await Trip.delete(tripToRemove)
-    console.log(tripDeleted, "el borrado")
-    // if (!tripDeleted.affected) {
-    //   return res.status(404).json({
-    //     success: false,
-    //     message: "trip can't be deleted",
-    //   })
-    // }
+    const tripDeleted = await Trip.remove(tripToRemove)
+
     return res.status(200).json({
       success: true,
       message: "Trip deleted",
-      tripDeleted: tripToRemove,
+      tripDeleted: tripDeleted,
     })
   } catch (error) {
     return res.status(500).json({

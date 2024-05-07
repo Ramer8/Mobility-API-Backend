@@ -28,7 +28,7 @@ export class Cars1714389965602 implements MigrationInterface {
           {
             name: "power_engine",
             type: "varchar",
-            length: "100",
+            length: "40",
             isNullable: true,
           },
           {

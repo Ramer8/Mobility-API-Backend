@@ -9,6 +9,7 @@ import {
 } from "typeorm"
 import { Role } from "./Role"
 import { Trip } from "./Trip"
+import { Car } from "./Car"
 
 @Entity("drivers")
 export class Driver extends BaseEntity {
@@ -26,6 +27,9 @@ export class Driver extends BaseEntity {
 
   @Column({ name: "role_id" })
   roleId!: number
+
+  @Column({ name: "car_id" })
+  carId!: number
 
   @Column({ name: "phone" })
   phone!: string
@@ -49,6 +53,10 @@ export class Driver extends BaseEntity {
   @JoinColumn({ name: "role_id" })
   role!: Role
   ///
+  @ManyToOne(() => Car, (car) => car.drivers)
+  @JoinColumn({ name: "car_id" })
+  car!: Car
+
   @OneToMany(() => Trip, (trip) => trip.driver)
   trips!: Trip[]
   //added this relation to trip and more

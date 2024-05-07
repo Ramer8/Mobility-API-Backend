@@ -37,6 +37,11 @@ export class Drivers1714392337856 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: "car_id",
+            type: "int",
+            isNullable: true,
+          },
+          {
             name: "phone",
             type: "varchar",
             length: "30",
@@ -76,6 +81,12 @@ export class Drivers1714392337856 implements MigrationInterface {
           {
             columnNames: ["role_id"],
             referencedTableName: "roles",
+            referencedColumnNames: ["id"],
+            onDelete: "CASCADE",
+          },
+          {
+            columnNames: ["car_id"],
+            referencedTableName: "cars",
             referencedColumnNames: ["id"],
             onDelete: "CASCADE",
           },

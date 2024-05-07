@@ -7,6 +7,9 @@ import { Driver } from "../models/Driver"
 import { Car } from "../models/Car"
 import { Brand } from "../models/Brand"
 
+// DROP DATABASE TAXI;
+// CREATE DATABASE TAXI;
+// USE TAXI;
 const roleSeedDatabase = async () => {
   try {
     await AppDataSource.initialize()

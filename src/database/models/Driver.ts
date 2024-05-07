@@ -59,5 +59,4 @@ export class Driver extends BaseEntity {
 
   @OneToMany(() => Trip, (trip) => trip.driver)
   trips!: Trip[]
-  //added this relation to trip and more
 }

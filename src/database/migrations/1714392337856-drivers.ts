@@ -16,12 +16,12 @@ export class Drivers1714392337856 implements MigrationInterface {
           {
             name: "driver_name",
             type: "varchar",
-            length: "255",
+            length: "40",
           },
           {
             name: "email",
             type: "varchar",
-            length: "100",
+            length: "40",
             isNullable: false,
             isUnique: true,
           },
@@ -67,7 +67,7 @@ export class Drivers1714392337856 implements MigrationInterface {
           {
             name: "location",
             type: "varchar",
-            length: "100",
+            length: "255",
             isNullable: true,
           },
           {

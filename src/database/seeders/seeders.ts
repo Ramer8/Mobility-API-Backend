@@ -97,8 +97,8 @@ const generateFakeDrivers = () => {
   driver.email = fakeName + "@gmail.com"
   driver.phone = faker.phone.number()
   driver.password = bcrypt.hashSync(`123456`, 8)
-  // user.password = bcrypt.hashSync(`${fakeName}`, 8)
   driver.role = new Role()
+  driver.carId = Math.floor(Math.random() * num_cars + 1)
   driver.role.id = 1
   return driver
 }
@@ -113,6 +113,7 @@ const driverSeedDatabase = async () => {
     superadmin.password =
       "$2b$08$Rj.Etm9wcVccDkV6jM8kM.fUFNgDDHO0fHCNWcKuGWcA4lZpXPsMO" // 123456
     superadmin.role = new Role()
+    // superadmin.carId = Math.floor(Math.random() * num_cars + 1)
     superadmin.role.id = 3
     superadmin.save()
 
@@ -166,6 +167,7 @@ const generateFakeCars = () => {
   car.seats = randomNumber < 0.5 ? 4 : 6
   car.accessibleCar = car.seats === 6 ? true : false
   car.numberPlate = faker.vehicle.vrm()
+  car.brandId = Math.floor(Math.random() * num_cars + 1)
 
   return car
 }
@@ -253,9 +255,9 @@ const carSeedDatabase = async () => {
 // Number of fake users and appointments we want to populate DB with
 // Roles and services are hardcoded
 // Hardcoded seed - in case of adding more services, this need to be changed by hand to adjust "generateFakeAppointments" in seeder)
-let num_services = 5
-let num_appointments = 100
-// Create appointments (choosing random number in the range of the users and services variables declared above)
+// let num_services = 5
+// let num_appointments = 100
+// //Create appointments (choosing random number in the range of the users and services variables declared above)
 // const generateFakeAppointments = () => {
 //   const appointment = new Appointment()
 //   appointment.appointmentDate = faker.date.future()
@@ -290,12 +292,37 @@ let num_appointments = 100
 //   }
 // }
 
+const generateFakeCars2 = () => {
+  const car = new Car()
+  car.brandId = Math.floor(Math.random() * num_cars + 1)
+  return car
+}
+const carSeedDatabase2 = async () => {
+  try {
+    await AppDataSource.initialize()
+
+    const fakeCars = Array.from({ length: num_cars }, generateFakeCars2)
+    await Car.save(fakeCars)
+
+    console.log("-----------------------------")
+    console.log("----Cars saved correctly-----")
+    console.log("-----------------------------")
+  } catch (error) {
+    console.log(error)
+  } finally {
+    if (AppDataSource) {
+      await AppDataSource.destroy()
+    }
+  }
+}
+
 const startSeeders = async () => {
   await roleSeedDatabase()
   await userSeedDatabase()
-  await driverSeedDatabase()
   await brandSeedDatabase()
   await carSeedDatabase()
+  await driverSeedDatabase()
+  // await carSeedDatabase2()
 }
 
 startSeeders()

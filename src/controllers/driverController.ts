@@ -82,10 +82,28 @@ export const updateDriverProfile = async (req: Request, res: Response) => {
 
 export const getDrivers = async (req: Request, res: Response) => {
   try {
+    const page = req.query.page ? parseInt(req.query.page as string) : 1 // Default to page 1 if not specified
+    const limit = req.query.limit ? parseInt(req.query.limit as string) : 10 // Default to 10 items per page if not specified
+
+    const skip = (page - 1) * limit
+
     const drivers = await Driver.find({
       order: {
         driverName: "ASC",
       },
+      select: {
+        id: true,
+        driverName: true,
+        phone: true,
+        documents: true,
+        roleId: true,
+        carId: true,
+        location: true,
+        score: true,
+        createdAt: true,
+      },
+      skip,
+      take: limit,
     })
 
     res.status(200).json({

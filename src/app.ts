@@ -4,6 +4,7 @@ import cors from "cors"
 import { authRouter } from "./routes/authRoutes"
 import { userRouter } from "./routes/userRoutes"
 import { driverRouter } from "./routes/driverRoutes"
+import { tripRouter } from "./routes/tripRoutes"
 // import { carRouter } from "./routes/carRoutes"
 
 export const app = express()
@@ -29,5 +30,5 @@ app.use("/", userRouter)
 // Drivers
 app.use("/", driverRouter)
 
-// Cars
-// app.use("/", carRouter)
+// Trips
+app.use("/", tripRouter)

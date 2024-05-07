@@ -130,38 +130,47 @@ export const showMyTripsWithToken = async (req: Request, res: Response) => {
 //   }
 // }
 
-// export const getAllAppointmentsSuper_admin = async (
-//   req: Request,
-//   res: Response
-// ) => {
-//   const appointment = await Appointment.find({
-//     order: {
-//       appointmentDate: "ASC",
-//     },
-//     relations: {
-//       service: true,
-//     },
-//     select: {
-//       appointmentDate: true,
-
-//       service: {
-//         serviceName: true,
-//         description: true,
-//       },
-//     },
-//   })
-//   if (!appointment) {
-//     return res.status(404).json({
-//       success: false,
-//       message: "Appointment not found",
-//     })
-//   }
-//   res.status(200).json({
-//     success: true,
-//     message: "Appointment showing successfuly",
-//     data: appointment,
-//   })
-// }
+export const getAllTripsSuper_admin = async (req: Request, res: Response) => {
+  const trip = await Trip.find({
+    order: {
+      tripDate: "ASC",
+    },
+    relations: {
+      driver: true,
+      car: true,
+      user: true,
+    },
+    select: {
+      tripDate: true,
+      car: {
+        model: true,
+        seats: true,
+        powerEngine: true,
+        numberPlate: true,
+        accessibleCar: true,
+      },
+      driver: {
+        driverName: true,
+        carId: true,
+      },
+      user: {
+        userName: true,
+        payment: true,
+      },
+    },
+  })
+  if (!trip) {
+    return res.status(404).json({
+      success: false,
+      message: "trip not found",
+    })
+  }
+  return res.status(200).json({
+    success: true,
+    message: "trip showing successfuly",
+    data: trip,
+  })
+}
 
 export const deleteTripById = async (req: Request, res: Response) => {
   try {

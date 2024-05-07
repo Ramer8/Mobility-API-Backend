@@ -16,26 +16,31 @@ export class Trips1714393803045 implements MigrationInterface {
           {
             name: "user_id",
             type: "int",
+            isNullable: true,
           },
           {
             name: "car_id",
             type: "int",
+            isNullable: true,
           },
           {
             name: "driver_id",
             type: "int",
+            isNullable: true,
           },
           {
             name: "start_location",
             type: "varchar",
             length: "100",
-            isNullable: false,
+            // isNullable: false,
+            isNullable: true,
           },
           {
             name: "destination",
             type: "varchar",
             length: "100",
-            isNullable: false,
+            // isNullable: false,
+            isNullable: true,
           },
           {
             name: "trip_date",

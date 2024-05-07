@@ -16,8 +16,8 @@ export const driverRouter = Router()
 driverRouter.get("/drivers/profile", auth, getDriverProfile)
 driverRouter.put("/drivers/profile", auth, updateDriverProfile)
 
-// Get All Drivers
-driverRouter.get("/drivers", auth, getDrivers)
+// Get All Drivers with pagination
+driverRouter.get("/drivers", auth, isSuperAdmin, getDrivers)
 
 // Super Admin Driver Routes
 driverRouter.delete("/drivers/:id", auth, isSuperAdmin, deleteDriverById)

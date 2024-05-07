@@ -142,6 +142,7 @@ export const getAllTripsSuper_admin = async (req: Request, res: Response) => {
     },
     select: {
       tripDate: true,
+      // the relation with cars table dont fetch the value , solve this
       car: {
         model: true,
         seats: true,
@@ -203,66 +204,89 @@ export const deleteTripById = async (req: Request, res: Response) => {
     })
   }
 }
-// export const updateMyAppointmentWithToken = async (
-//   req: Request,
-//   res: Response
-// ) => {
-//   try {
-//     const { appointmentDate, appointment_id } = req.body
-//     const userId = req.tokenData.userId
-//     const appointment = await Appointment.find({
-//       where: {
-//         userId: userId,
-//         id: parseInt(appointment_id), // busca la cita a actualizar le paso id q quiero actualizar
-//       },
-//       relations: {
-//         service: true,
-//       },
-//       select: {
-//         appointmentDate: true,
-//         id: true,
-//         service: {
-//           serviceName: true,
-//           description: true,
-//           id: true,
-//         },
-//       },
-//     })
-//     console.log(appointment)
-//     if (!appointment.length) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "Appointment/s not found",
-//         error: Error,
-//       })
-//     }
-//     const appointmentToUpdate = await Appointment.update(
-//       {
-//         userId: userId,
-//         id: appointment_id,
-//       },
-//       {
-//         appointmentDate: appointmentDate,
-//       }
-//     )
-//     if (!appointmentToUpdate.affected) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "Appointment/s not found",
-//         error: Error,
-//       })
-//     }
-//     res.status(200).json({
-//       success: true,
-//       message: "Appointment updated successfuly",
-//       appointment,
-//       newDateAppointemnt: appointmentDate,
-//     })
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       message: "Appointment can't be updated",
-//       error: error,
-//     })
-//   }
-// }
+export const updateMyTripWithToken = async (req: Request, res: Response) => {
+  try {
+    const {
+      tripDate,
+      trip_id,
+      startLocation,
+      destination,
+      driverId,
+      tripStartDate,
+      tripFinishDate,
+      carId,
+    } = req.body
+    const userId = req.tokenData.userId
+    const trip = await Trip.find({
+      where: {
+        userId: userId,
+        id: parseInt(trip_id), // busca la cita a actualizar le paso id q quiero actualizar
+      },
+      relations: {
+        driver: true,
+        user: true,
+        // car: true,
+      },
+      select: {
+        tripDate: true,
+        id: true,
+        driver: {
+          driverName: true,
+          carId: true,
+          id: true,
+        },
+        user: {
+          userName: true,
+          payment: true,
+        },
+        // car: {
+        //   model: true,
+        //   numberPlate: true,
+        // },
+      },
+    })
+    console.log(trip)
+    if (!trip.length) {
+      return res.status(404).json({
+        success: false,
+        message: "trip/s not found",
+        error: Error,
+      })
+    }
+    const tripToUpdate = await Trip.update(
+      {
+        userId: userId,
+        id: trip_id,
+      },
+      {
+        tripDate: tripDate,
+        startLocation: startLocation,
+        destination: destination,
+        driverId: driverId,
+        tripStartDate: tripStartDate,
+        tripFinishDate: tripFinishDate,
+        carId: carId,
+      }
+    )
+    if (!tripToUpdate.affected) {
+      return res.status(404).json({
+        success: false,
+        message: "trip/s not found",
+        error: Error,
+      })
+    }
+    console.log(tripToUpdate, "lo que cambio")
+    res.status(200).json({
+      success: true,
+      message: "trip updated successfuly",
+      trip,
+      tripDate: tripDate,
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "trip can't be updated",
+      error: error,
+    })
+  }
+}

@@ -4,6 +4,7 @@ import {
   deleteTripById,
   getAllTripsSuper_admin,
   showMyTripsWithToken,
+  updateMyTripWithToken,
 } from "../controllers/tripController"
 import { auth } from "../middlewares/auth"
 import { isSuperAdmin } from "../middlewares/isSuperAdmin"
@@ -18,6 +19,9 @@ tripRouter.delete("/trips/:id", auth, isSuperAdmin, deleteTripById)
 tripRouter.get("/trips", auth, showMyTripsWithToken)
 // Get all Trips
 tripRouter.get("/trips/all", auth, isSuperAdmin, getAllTripsSuper_admin)
+
+// Update Trip with token
+tripRouter.put("/trips", auth, updateMyTripWithToken)
 
 // // Driver Authorization
 // authRouter.post("/auth/drivers/register", registerDriver)

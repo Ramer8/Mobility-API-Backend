@@ -1,6 +1,43 @@
 import { Request, Response } from "express"
 import { User } from "../database/models/User"
 
+export const getUsers = async (req: Request, res: Response) => {
+  try {
+    const page = req.query.page ? parseInt(req.query.page as string) : 1 // Default to page 1 if not specified
+    const limit = req.query.limit ? parseInt(req.query.limit as string) : 10 // Default to 10 items per page if not specified
+
+    const skip = (page - 1) * limit
+
+    const users = await User.find({
+      order: {
+        userName: "ASC",
+      },
+      select: {
+        id: true,
+        userName: true,
+        phone: true,
+        documents: true,
+        roleId: true,
+        location: true,
+        createdAt: true,
+      },
+      skip,
+      take: limit,
+    })
+
+    res.status(200).json({
+      success: true,
+      message: "user retriever successfully",
+      data: users,
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "user can't be retriever successfully",
+      error: error,
+    })
+  }
+}
 export const getUserProfile = async (req: Request, res: Response) => {
   try {
     const { userId } = req.tokenData

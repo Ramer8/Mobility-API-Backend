@@ -163,41 +163,46 @@ export const showMyTripsWithToken = async (req: Request, res: Response) => {
 //   })
 // }
 
-// export const deleteTripById = async (req: Request, res: Response) => {
-//   try {
-//     const userId = req.tokenData.userId
-//     const tripToRemove: any = await Trip.findOneBy({
-//       userId: userId,
-//       id: parseInt(req.params.id),
-//     })
-//     if (!tripToRemove) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "trip can't be deleted because not exist in Data Base",
-//       })
-//     }
-//     console.log(tripToRemove, "fdsagfadgdfa")
+export const deleteTripById = async (req: Request, res: Response) => {
+  //no borra la funcion, revisar
+  try {
+    const userId = req.tokenData.userId
+    console.log(userId)
+    console.log(parseInt(req.params.id))
 
-//     const tripDeleted = await Trip.delete(tripToRemove)
-//     // if (!tripDeleted.affected) {
-//     //   return res.status(404).json({
-//     //     success: false,
-//     //     message: "trip can't be deleted",
-//     //   })
-//     // }
-//     return res.status(200).json({
-//       success: true,
-//       message: "Trip deleted",
-//       tripDeleted: tripToRemove,
-//     })
-//   } catch (error) {
-//     return res.status(500).json({
-//       success: false,
-//       message: "Trip can't be deleted",
-//       error: error,
-//     })
-//   }
-// }
+    const tripToRemove: any = await Trip.findOneBy({
+      userId: userId,
+      id: parseInt(req.params.id),
+    })
+    if (!tripToRemove) {
+      return res.status(404).json({
+        success: false,
+        message: "trip can't be deleted because not exist in Data Base",
+      })
+    }
+    console.log(tripToRemove, "fdsagfadgdfa")
+
+    const tripDeleted = await Trip.delete(tripToRemove)
+    console.log(tripDeleted, "el borrado")
+    // if (!tripDeleted.affected) {
+    //   return res.status(404).json({
+    //     success: false,
+    //     message: "trip can't be deleted",
+    //   })
+    // }
+    return res.status(200).json({
+      success: true,
+      message: "Trip deleted",
+      tripDeleted: tripToRemove,
+    })
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Trip can't be deleted",
+      error: error,
+    })
+  }
+}
 // export const updateMyAppointmentWithToken = async (
 //   req: Request,
 //   res: Response

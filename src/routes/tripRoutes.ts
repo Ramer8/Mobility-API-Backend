@@ -3,6 +3,7 @@ import {
   createTripWithToken,
   deleteTripById,
   getAllTripsSuper_admin,
+  recoverTripWithId,
   showMyTripsWithToken,
   updateMyTripWithToken,
 } from "../controllers/tripController"
@@ -22,7 +23,7 @@ tripRouter.get("/trips/all", auth, isSuperAdmin, getAllTripsSuper_admin)
 
 // Update Trip with token
 tripRouter.put("/trips", auth, updateMyTripWithToken)
-
+tripRouter.put("/trips/:id", auth, recoverTripWithId)
 // // Driver Authorization
 // authRouter.post("/auth/drivers/register", registerDriver)
 // authRouter.post("/auth/drivers/login", loginDriver)

@@ -94,48 +94,67 @@ export const showMyTripsWithToken = async (req: Request, res: Response) => {
   }
 }
 
-// export const recoverAppointmentWithId = async (req: Request, res: Response) => {
-//   try {
-//     const appointment_id = req.params.id
+export const recoverTripWithId = async (req: Request, res: Response) => {
+  try {
+    const tripId = req.params.id
 
-//     const { userId } = req.tokenData
+    const { userId } = req.tokenData
 
-//     const appointment = await Appointment.find({
-//       where: {
-//         userId: userId,
-//         id: parseInt(appointment_id),
-//       },
-//       relations: {
-//         service: true,
-//       },
-//       select: {
-//         appointmentDate: true,
-//         id: true,
-//         service: {
-//           serviceName: true,
-//           description: true,
-//         },
-//       },
-//     })
-//     if (!appointment.length) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "Appointment id not found",
-//       })
-//     }
-//     res.status(200).json({
-//       success: true,
-//       message: "Appointment id retrieved successfuly",
-//       data: appointment,
-//     })
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       message: "Appointment id can't be retriever successfully",
-//       error: error,
-//     })
-//   }
-// }
+    const trip = await Trip.find({
+      where: {
+        userId: userId,
+        id: parseInt(tripId),
+      },
+      relations: {
+        driver: true,
+        car: true,
+        user: true,
+      },
+      select: {
+        tripDate: true,
+        startLocation: true,
+        destination: true,
+        tripFinishDate: true,
+        tripStartDate: true,
+        car: {
+          model: true,
+          seats: true,
+          powerEngine: true,
+          numberPlate: true,
+          accessibleCar: true,
+        },
+        driver: {
+          driverName: true,
+          carId: true,
+        },
+        user: {
+          userName: true,
+          payment: true,
+        },
+      },
+    })
+
+    console.log(trip, "el viaje")
+
+    if (!trip.length) {
+      return res.status(404).json({
+        success: false,
+        message: "Trip id not found",
+      })
+    }
+    res.status(200).json({
+      success: true,
+      message: "Trip id retrieved successfuly",
+      data: trip,
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Trip id can't be retriever successfully",
+      error: error,
+    })
+  }
+}
 
 export const getAllTripsSuper_admin = async (req: Request, res: Response) => {
   const trip = await Trip.find({

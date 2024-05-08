@@ -1,22 +1,29 @@
 import { Request, Response } from "express"
 import { Trip } from "../database/models/Trip"
 import { User } from "../database/models/User"
+import { Driver } from "../database/models/Driver"
 
 export const createTripWithToken = async (req: Request, res: Response) => {
   try {
     const userId = req.tokenData.userId
-    const {
-      driverId,
+    const { driverId, tripStartDate, destination, startLocation } = req.body
 
-      tripStartDate,
-      destination,
-    } = req.body
+    const dataDriver = await Driver.find({
+      where: {
+        id: driverId,
+      },
+      select: {
+        carId: true,
+      },
+    })
 
     const newtrip = await Trip.create({
       tripStartDate: tripStartDate,
       userId: userId,
+      startLocation: startLocation,
       destination: destination,
       driverId: driverId,
+      carId: dataDriver[0].carId,
     }).save()
     res.status(201).json({
       success: true,
@@ -142,7 +149,6 @@ export const getAllTripsSuper_admin = async (req: Request, res: Response) => {
     },
     select: {
       tripDate: true,
-      // the relation with cars table dont fetch the value , solve this
       car: {
         model: true,
         seats: true,

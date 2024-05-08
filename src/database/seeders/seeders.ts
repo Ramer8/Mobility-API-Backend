@@ -76,7 +76,15 @@ const userSeedDatabase = async () => {
     superadmin.role.id = 3
     superadmin.save()
 
-    // Fake users (with role_id = 1 by default)
+    const user = new User()
+    user.userName = "user"
+    user.email = "user@user.com"
+    user.password =
+      "$2b$08$Rj.Etm9wcVccDkV6jM8kM.fUFNgDDHO0fHCNWcKuGWcA4lZpXPsMO" // 123456
+    user.role = new Role()
+    user.role.id = 1
+    user.save()
+
     const fakeUsers = Array.from({ length: num_users - 2 }, generateFakeUsers)
     await User.save(fakeUsers)
 

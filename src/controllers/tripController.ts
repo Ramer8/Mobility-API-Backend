@@ -126,6 +126,7 @@ export const recoverTripWithId = async (req: Request, res: Response) => {
         driver: {
           driverName: true,
           carId: true,
+          score: true,
         },
         user: {
           userName: true,

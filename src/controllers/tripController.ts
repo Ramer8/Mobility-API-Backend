@@ -7,7 +7,6 @@ export const createTripWithToken = async (req: Request, res: Response) => {
   try {
     const userId = req.tokenData.userId
     const { driverId, tripStartDate, destination, startLocation } = req.body
-
     const dataDriver = await Driver.find({
       where: {
         id: driverId,
@@ -18,9 +17,9 @@ export const createTripWithToken = async (req: Request, res: Response) => {
     })
 
     const newtrip = await Trip.create({
-      tripStartDate: tripStartDate,
       userId: userId,
       startLocation: startLocation,
+      tripStartDate: tripStartDate,
       destination: destination,
       driverId: driverId,
       carId: dataDriver[0].carId,
@@ -122,11 +121,13 @@ export const recoverTripWithId = async (req: Request, res: Response) => {
           powerEngine: true,
           numberPlate: true,
           accessibleCar: true,
+          brandId: true,
         },
         driver: {
           driverName: true,
           carId: true,
           score: true,
+          driverMessage: true,
         },
         user: {
           userName: true,
@@ -134,8 +135,6 @@ export const recoverTripWithId = async (req: Request, res: Response) => {
         },
       },
     })
-
-    console.log(trip, "el viaje")
 
     if (!trip.length) {
       return res.status(404).json({
@@ -156,6 +155,70 @@ export const recoverTripWithId = async (req: Request, res: Response) => {
     })
   }
 }
+
+// export const recoverCurrentTrip = async (req: Request, res: Response) => {
+//   try {
+//     // const tripId = req.params.id
+
+//     const { userId } = req.tokenData
+//     console.log(userId)
+//     const trip = await Trip.find({
+//       where: {
+//         userId: userId,
+//         tripFinishDate: undefined,
+//         // id: parseInt(tripId),
+//       },
+//       relations: {
+//         driver: true,
+//         car: true,
+//         user: true,
+//       },
+//       select: {
+//         tripDate: true,
+//         startLocation: true,
+//         destination: true,
+//         tripFinishDate: true,
+//         tripStartDate: true,
+//         car: {
+//           model: true,
+//           seats: true,
+//           powerEngine: true,
+//           numberPlate: true,
+//           accessibleCar: true,
+//           brandId: true,
+//         },
+//         driver: {
+//           driverName: true,
+//           carId: true,
+//           score: true,
+//           driverMessage: true,
+//         },
+//         user: {
+//           userName: true,
+//           payment: true,
+//         },
+//       },
+//     })
+
+//     if (!trip.length) {
+//       return res.status(404).json({
+//         success: false,
+//         message: "Trip id not found",
+//       })
+//     }
+//     res.status(200).json({
+//       success: true,
+//       message: "Trip id retrieved successfuly",
+//       data: trip,
+//     })
+//   } catch (error) {
+//     res.status(500).json({
+//       success: false,
+//       message: "Trip id can't be retriever successfully",
+//       error: error,
+//     })
+//   }
+// }
 
 export const getAllTripsSuper_admin = async (req: Request, res: Response) => {
   const trip = await Trip.find({

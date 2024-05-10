@@ -25,7 +25,7 @@ export class Trip extends BaseEntity {
   driverId!: number
 
   @Column({ name: "start_location" })
-  startLocation!: Date
+  startLocation!: string
 
   @Column({ name: "destination" })
   destination!: string

@@ -111,6 +111,7 @@ const generateFakeDrivers = () => {
   driver.role = new Role()
   driver.carId = Math.floor(Math.random() * num_cars + 1)
   driver.role.id = 1
+  driver.score = Math.floor(Math.random() * 5 + 1)
   return driver
 }
 const driverSeedDatabase = async () => {
@@ -124,7 +125,9 @@ const driverSeedDatabase = async () => {
     superadmin.password =
       "$2b$08$Rj.Etm9wcVccDkV6jM8kM.fUFNgDDHO0fHCNWcKuGWcA4lZpXPsMO" // 123456
     superadmin.role = new Role()
-    // superadmin.carId = Math.floor(Math.random() * num_cars + 1)
+    superadmin.carId = Math.floor(Math.random() * num_cars + 1)
+    superadmin.score = Math.floor(Math.random() * 5 + 1)
+
     superadmin.role.id = 3
     superadmin.save()
 

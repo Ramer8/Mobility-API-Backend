@@ -168,6 +168,11 @@ export const getAllTripsSuper_admin = async (req: Request, res: Response) => {
     },
     select: {
       tripDate: true,
+      id: true,
+      startLocation: true,
+      destination: true,
+      tripFinishDate: true,
+      tripStartDate: true,
       car: {
         model: true,
         seats: true,
@@ -197,7 +202,54 @@ export const getAllTripsSuper_admin = async (req: Request, res: Response) => {
     data: trip,
   })
 }
+export const deleteMoreThanOneTrips = async (req: Request, res: Response) => {
+  try {
+    const tripsId = req.body.tripsId
+    const tripsToRemove: any[] = await Trip.createQueryBuilder("trip")
+      .select([
+        "trip.id",
+        "trip.startLocation",
+        "trip.destination",
+        "trip.tripDate",
+        "trip.userId",
+        "trip.carId",
+        "trip.driverId",
+      ])
+      .where("trip.id IN (:...tripsId)", { tripsId })
+      .getMany()
 
+    // const isSuperAdmin = tripsToRemove.find(
+    //   (users) => users.roleId === 3 || users.roleId === 2
+    // )
+    // if (isSuperAdmin) {
+    //   return res.status(500).json({
+    //     success: false,
+    //     message: "One of this users can't be deleted",
+    //   })
+    // }
+    if (!tripsToRemove.length) {
+      return res.status(404).json({
+        success: false,
+        message: "Trip/s can't be deleted because not exist in Data Base",
+      })
+    }
+
+    const tripsDeleted = await Trip.delete(tripsToRemove)
+
+    res.status(200).json({
+      success: true,
+      message: "Trips/s deleted successfully",
+      data: tripsDeleted,
+      tripsToRemove,
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Trips/s can't be deleted",
+      error: error,
+    })
+  }
+}
 export const deleteTripById = async (req: Request, res: Response) => {
   try {
     const userId = req.tokenData.userId

@@ -1,9 +1,9 @@
 import { Router } from "express"
 import {
   createTripWithToken,
+  deleteMoreThanOneTrips,
   deleteTripById,
   getAllTripsSuper_admin,
-  // recoverCurrentTrip,
   recoverTripWithId,
   showMyTripsWithToken,
   updateMyTripWithToken,
@@ -17,6 +17,10 @@ export const tripRouter = Router()
 tripRouter.post("/trips", auth, createTripWithToken)
 // Delete trip by id (superAdmin)
 tripRouter.delete("/trips/:id", auth, deleteTripById)
+
+// Delete more than one Trip (superAdmin)
+tripRouter.delete("/trips/", auth, isSuperAdmin, deleteMoreThanOneTrips)
+
 // Get my user Trip
 tripRouter.get("/trips", auth, showMyTripsWithToken)
 // Get all Trips

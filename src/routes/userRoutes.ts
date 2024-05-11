@@ -5,6 +5,7 @@ import {
   deleteUserById,
   getUserProfile,
   getUsers,
+  searchUserbyEmailOrName,
   updateUserProfile,
 } from "../controllers/userController"
 import { isSuperAdmin } from "../middlewares/isSuperAdmin"
@@ -20,3 +21,4 @@ userRouter.delete("/users/:id", auth, isSuperAdmin, deleteUserById)
 userRouter.delete("/users/", auth, isSuperAdmin, deleteMoreThanOneUsers)
 // Get all user with pagination
 userRouter.get("/users/", auth, isSuperAdmin, getUsers)
+userRouter.get("/users/search?", auth, isSuperAdmin, searchUserbyEmailOrName)

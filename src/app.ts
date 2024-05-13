@@ -5,7 +5,6 @@ import { authRouter } from "./routes/authRoutes"
 import { userRouter } from "./routes/userRoutes"
 import { driverRouter } from "./routes/driverRoutes"
 import { tripRouter } from "./routes/tripRoutes"
-// import { carRouter } from "./routes/carRoutes"
 
 export const app = express()
 app.use(express.json())

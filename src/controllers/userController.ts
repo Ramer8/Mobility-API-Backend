@@ -51,8 +51,7 @@ export const searchUserbyEmailOrName = async (req: Request, res: Response) => {
 
     // Check if the request contains a search query parameter for email or name
     const searchQuery = req.query.search as string | undefined
-    console.log(searchQuery)
-    console.log(req.query, "lo q llega")
+
     // Define the filter criteria
     const filterCriteria: any = {
       order: {

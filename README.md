@@ -1,5 +1,7 @@
 ### Mobility App Backend
 
+---
+
 ###### Mobility App
 
 <div style="display: flex; justify-content: space-around;">
@@ -7,7 +9,11 @@
 <center><img style="border-radius:15px; padding:1px; width:100%;"  src="./src/img/demo.png"></center>
 </div>
 
-Thank you very much for your interest in my project. It's the final full stack project with Geekshubs Academyof of the Full Stack Development Bootcamp 🚀.
+---
+
+Thank you very much for your interest in my project. It's the last proyect, a complete full stack project with Geekshubs Academy of the Full Stack Development Bootcamp 🚀.
+
+---
 
 <div>
 
@@ -139,6 +145,13 @@ GET `http://localhost:5500/users/profile`
 
 PUT `http://localhost:5500/users/profile`
 
+{
+"userName": "Jhon Smith",
+"phone": "+3461371436",
+"address": "carrer xativa 20",
+"payment": "credit"
+}
+
 ---
 
 <li> Delete User by Id</li>
@@ -147,9 +160,17 @@ DELETE `http://localhost:5500/users/:id`
 
 ---
 
-<li> Delete User more than one User </li>
+<li> Delete one User or more by Id arrays (superAdmin) </li>
 
-DELETE `http://localhost:5500/users/`
+DELETE `http://localhost:5500/users`
+
+`{
+"usersId" : [4,5,7,5,78,2]
+}`
+
+`{
+"usersId" : [12]
+}`
 
 ---
 
@@ -171,19 +192,15 @@ POST `http://localhost:5500/trips/`
 "driverId": 3
 }
 
+---
+
 <li> Get all Trips (Super_admin) </li>
 
 GET `http://localhost:5500/trips/all`
 
 ---
 
-<li> Get my Current Trip (TOKEN) </li>
-
-GET `http://localhost:5500/trips/current`
-
----
-
-<li> Get all my Trips (TOKEN) </li>
+<li> Get my all Trips (TOKEN) </li>
 
 PUT `http://localhost:5500/trips/:id`
 
@@ -195,77 +212,92 @@ GET `http://localhost:5500/trips`
 
 ---
 
-<li> Update Profile Data</li>
+<li> Update Trip (TOKEN) </li>
 
-PUT `http://localhost:4500/api/users/profile`
+PUT `http://localhost:5500/trips/`
 
-<img src="./src/img/updateProfile.png"/>
-
-<li> Update Role </li>
-
-PUT `http://localhost:4500/api/users/1/role`
-
-<img src="./src/img/updateRoleUserbyId.png"/>
-
----
-
- <ol style="color:green;font-weight:bolder"> Appointments </ol>
+{
+"tripDate": "2024-05-01 19:00:00",
+"trip_id": 23,
+"driverId": 4,
+"startLocation": "Godella",
+"destination":"Palau de Congresos",
+"carId":2
+}
 
 ---
 
-<li> Create Appointments </li>
+<li> Update Trip by Id (TOKEN) </li>
 
-POST `http://localhost:4500/api/appointments`
-
-<img src="./src/img/CreateNewAppointment.png"/>
-
-<li> Update Appointments </li>
-
-POST `http://localhost:4500/api/appointments`
-
-<img src="./src/img/updateAppointmentByToken.png"/>
-
-<li> Get Appointment by Id </li>
-
-GET `http://localhost:4500/api/appointments/109`
-
-<img src="./src/img/getAppointmenById.png"/>
-
-<li> Appointment Retrieved </li>
-
-GET `http://localhost:4500/api/appointments`
+PUT `http://localhost:5500/trips/:id`
 
 ---
 
-<ol style="color:green;font-weight:bolder"> Services </ol>
+<li> Delete Trip by Id (TOKEN) </li>
+
+DELETE `http://localhost:5500/trips/:id`
 
 ---
 
-<li> Get all Services</li>
+<li> Delete more than one Trips by Id array (superAdmin)  </li>
 
-GET `localhost:4500/api/services`
+DELETE `http://localhost:5500/trips`
 
-<img src="./src/img/getAllServices.png"/>
+{
+"tripsId" : [4,2,5,6,8,10]
+}
 
-<li>  Create new Service</li>
+{
+"tripsId" : [6]
+}
 
-POST `http://localhost:4500/api/services`
+---
 
-<img src="./src/img/createNewService.png"/>
+<li> Get All Drivers with pagination </li>
 
-<li> Update Service </li>
+GET `http://localhost:5500/drivers`
 
-POST `http://localhost:4500/api/services`
+---
 
-<img src="./src/img/updateService.png"/>
+<li>Pagination Example</li>
 
-<li> Delete Service </li>
+`url_example_of_pagination":"http://localhost:5500/drivers?page=2`
 
-DELETE `localhost:4500/api/services/7`
+`"url_example_of_pagination1":"http://localhost:5500/drivers?limit=20",`
 
-<img src="./src/img/deleteService.png"/>
+`"url_example_of_pagination2":"http://localhost:5500/drivers?page=3&limit=15"`
 
-<div>
+---
+
+<li> Get Driver Profile</li>
+
+GET `http://localhost:5500/drivers/profile`
+
+---
+
+<li> Update Driver Profile</li>
+
+PUT `http://localhost:5500/drivers/profile`
+
+---
+
+<li> Delete Driver by Id</li>
+
+DELETE `http://localhost:5500/drivers/:id`
+
+---
+
+<li> Delete one Driver or more by Id arrays (superAdmin) </li>
+
+DELETE `http://localhost:5500/drivers`
+
+{
+"driversId" : [4,5,7,5,78,2]
+}
+
+{
+"driversId" : [12]
+}
 
 ---
 
@@ -279,7 +311,7 @@ Import this file:
 </div>
 <br>
 
-`./HTTP/thunder-collection_TATTOO_SHOP.json`
+`./HTTP/thunder-collection_TAXI APP.json`
 
 ---
 
@@ -564,7 +596,7 @@ app.use("/", authRouter) //<-- Route Example
 
   <li> Run seeders:</li>
 
-`$ npm run seed`
+`$ npm run seeders`
 
   <li>Start server:</li>
 

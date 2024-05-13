@@ -1,0 +1,474 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "TAXI APP",
+    "collectionId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+    "dateExported": "2024-05-13T01:46:41.716Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "6a22c6b4-cebe-496b-95ec-6f9f7b9b7dd6",
+            "name": "AUTH USERS",
+            "containerId": "",
+            "created": "2024-05-02T08:59:58.568Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "0cc53e14-e50e-4d08-a0c3-943cda7138df",
+            "name": "AUTH DRIVERS",
+            "containerId": "",
+            "created": "2024-05-06T10:01:10.962Z",
+            "sortNum": 15000
+        },
+        {
+            "_id": "199acd1f-7764-4ef5-9f1b-ace742706548",
+            "name": "TRIPS",
+            "containerId": "",
+            "created": "2024-05-02T08:59:58.569Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "e3675f96-1a24-4358-896e-b101ed2b35dd",
+            "name": "USERS",
+            "containerId": "",
+            "created": "2024-05-02T08:59:58.572Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "0eacc5d0-99d7-4c56-9b3d-0b0640286e73",
+            "name": "DRIVER PROFILE",
+            "containerId": "",
+            "created": "2024-05-06T10:49:45.026Z",
+            "sortNum": 55000
+        },
+        {
+            "_id": "fcd288b0-c88a-4708-ae01-894aae11aa38",
+            "name": "SUPER_ADMIN",
+            "containerId": "",
+            "created": "2024-05-02T08:59:58.574Z",
+            "sortNum": 60000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "8a91e7c9-8af7-4e2d-ae2a-02519d1a2eb4",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "fcd288b0-c88a-4708-ae01-894aae11aa38",
+            "name": "DELETE USER BY ID (super_admin)",
+            "url": "localhost:5500/users/1",
+            "method": "DELETE",
+            "sortNum": 5000,
+            "created": "2024-05-02T08:59:58.569Z",
+            "modified": "2024-05-06T21:55:12.984Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IlN1cGVyIiwiZW1haWwiOiJzdXBlckBzdXBlci5jb20iLCJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MTUwMzI0NDUsImV4cCI6MTcxNTAzOTY0NX0.YhKLKT6PZz8c2VsGbCO2GxNmh1-AOv9JE05OZ4xO8RE"
+            }
+        },
+        {
+            "_id": "dd17e3e1-71e1-4278-8243-138d4366eaf6",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "fcd288b0-c88a-4708-ae01-894aae11aa38",
+            "name": "DELETE MORE THAN ONE USERS BY ID (super_admin) ",
+            "url": "localhost:5500/users",
+            "method": "DELETE",
+            "sortNum": 6250,
+            "created": "2024-05-02T08:59:58.570Z",
+            "modified": "2024-05-06T16:56:46.084Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"usersId\" : [4,5,7]\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IlN1cGVyIiwiZW1haWwiOiJzdXBlckBzdXBlci5jb20iLCJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MTUwMTQ1MTAsImV4cCI6MTcxNTAyMTcxMH0.cfiDlpR2v5E3HFug7tECsFrKOmjfu4mKr5QMiQgNwg4"
+            }
+        },
+        {
+            "_id": "60e4b0eb-cf6a-4659-915f-71902dc69be8",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "fcd288b0-c88a-4708-ae01-894aae11aa38",
+            "name": "DELETE MORE THAN ONE TRIP BY ID (super_admin) ",
+            "url": "localhost:5500/trips",
+            "method": "DELETE",
+            "sortNum": 6562.5,
+            "created": "2024-05-11T04:13:47.589Z",
+            "modified": "2024-05-11T04:17:53.352Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"tripsId\" : [1,2]\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IlN1cGVyIiwiZW1haWwiOiJzdXBlckBzdXBlci5jb20iLCJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MTUzOTQzMDYsImV4cCI6MTcxNTQ2NjMwNn0.A8XigBEn4BqWov_Xd-pPqwupuRggmtTgoJDXliBZUK0"
+            }
+        },
+        {
+            "_id": "ee06528e-e6be-4cdf-9589-f27c90a6025f",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "fcd288b0-c88a-4708-ae01-894aae11aa38",
+            "name": "DELETE MORE THAN ONE DRIVERS BY ID (super_admin) ",
+            "url": "localhost:5500/drivers",
+            "method": "DELETE",
+            "sortNum": 6875,
+            "created": "2024-05-06T22:05:19.517Z",
+            "modified": "2024-05-06T22:12:23.079Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"driversId\" : [3,4]\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXJOYW1lIjoiU3VwZXIiLCJlbWFpbCI6InN1cGVyQHN1cGVyLmNvbSIsImRyaXZlcklkIjoxLCJyb2xlTmFtZSI6InN1cGVyX2FkbWluIiwiaWF0IjoxNzE1MDMxMjgwLCJleHAiOjE3MTUwMzg0ODB9.5PWgA9d08riustaML8WIfAhy5JLTQLS4XGpjVpGUdTI"
+            }
+        },
+        {
+            "_id": "371bd46e-5c02-4ade-9b24-6e450a8a2b90",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "6a22c6b4-cebe-496b-95ec-6f9f7b9b7dd6",
+            "name": "REGISTER NEW USER",
+            "url": "localhost:5500/auth/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-05-02T08:59:58.573Z",
+            "modified": "2024-05-04T01:32:29.863Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userName\":\"Jeremy\",\n    \"email\":  \"jeremias@super.com\",\n  \"password\":\"123456\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MDk3MTYwNjMsImV4cCI6MTcwOTcyMzI2M30.AXNEi1YdhJyCpHFilKcV62RAMxsGHJCaqzFS0QCpIVA"
+            }
+        },
+        {
+            "_id": "d4b6a1a0-151c-4198-8d36-7342fc20f846",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "199acd1f-7764-4ef5-9f1b-ace742706548",
+            "name": "DELETE TRIP BY ID",
+            "url": "localhost:5500/trips/3",
+            "method": "DELETE",
+            "sortNum": 10000,
+            "created": "2024-05-02T08:59:58.574Z",
+            "modified": "2024-05-10T12:36:40.937Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAdXNlci5jb20iLCJ1c2VySWQiOjIsInJvbGVOYW1lIjoidXNlciIsImlhdCI6MTcxNTM0MTQ2OSwiZXhwIjoxNzE1NDEzNDY5fQ.AHEAN7xE9dOPOYASoQk5hTDZkTiMC1Tjd9Bp8Y9zXYU"
+            }
+        },
+        {
+            "_id": "0f042456-003f-4c65-b521-202f605826c0",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "0cc53e14-e50e-4d08-a0c3-943cda7138df",
+            "name": "REGISTER NEW DRIVER",
+            "url": "localhost:5500/auth/drivers/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-05-06T10:01:10.962Z",
+            "modified": "2024-05-06T11:03:45.509Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"driverName\":\"Jeremias Mateo\",\n    \"email\":  \"jeremiasMat@super.com\",\n  \"password\":\"123456\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MDk3MTYwNjMsImV4cCI6MTcwOTcyMzI2M30.AXNEi1YdhJyCpHFilKcV62RAMxsGHJCaqzFS0QCpIVA"
+            }
+        },
+        {
+            "_id": "c3efc0e0-a52f-4bce-b1c7-3de14f8c0c13",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "e3675f96-1a24-4358-896e-b101ed2b35dd",
+            "name": "GET USER PROFILE",
+            "url": "http://localhost:5500/users/profile",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-05-13T01:43:34.120Z",
+            "modified": "2024-05-13T01:44:35.527Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAdXNlci5jb20iLCJ1c2VySWQiOjEsInJvbGVOYW1lIjoidXNlciIsInBheW1lbnQiOm51bGwsImlhdCI6MTcxNTU2MjI5NCwiZXhwIjoxNzE1NjM0Mjk0fQ.ZktIsq5EImZ-D2I3UkzqWNYHLkaYNGBTb_squ-Hw2tk"
+            }
+        },
+        {
+            "_id": "7eccb66b-71cc-4059-932e-b6ee94dd09e2",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "fcd288b0-c88a-4708-ae01-894aae11aa38",
+            "name": "DELETE DRIVER BY ID (super_admin)",
+            "url": "localhost:5500/drivers/40",
+            "method": "DELETE",
+            "sortNum": 15000,
+            "created": "2024-05-06T21:30:09.565Z",
+            "modified": "2024-05-06T21:47:15.436Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXJOYW1lIjoiU3VwZXIiLCJlbWFpbCI6InN1cGVyQHN1cGVyLmNvbSIsImRyaXZlcklkIjoxLCJyb2xlTmFtZSI6InN1cGVyX2FkbWluIiwiaWF0IjoxNzE1MDMxMjgwLCJleHAiOjE3MTUwMzg0ODB9.5PWgA9d08riustaML8WIfAhy5JLTQLS4XGpjVpGUdTI"
+            }
+        },
+        {
+            "_id": "4ab6cb58-0c55-4143-aaab-88345baab830",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "fcd288b0-c88a-4708-ae01-894aae11aa38",
+            "name": "GET USERS BY EMAIL QUERY FILTERS  MOBILITY (super_admin) ",
+            "url": "http://localhost:5500/users/search?search=@gmail",
+            "method": "GET",
+            "sortNum": 17500,
+            "created": "2024-05-02T08:59:58.577Z",
+            "modified": "2024-05-11T11:55:49.121Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "search",
+                    "value": "@gmail",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IlN1cGVyIiwiZW1haWwiOiJzdXBlckBzdXBlci5jb20iLCJ1c2VySWQiOjMsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MTU0MjYzNTMsImV4cCI6MTcxNTQ5ODM1M30.9kiGUvJRIbjCwh8c8j86xsDATh5KAypnREKR8k5peUE"
+            }
+        },
+        {
+            "_id": "6e5981f7-9b35-4360-b19e-11757c61b5be",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "6a22c6b4-cebe-496b-95ec-6f9f7b9b7dd6",
+            "name": "LOGIN USER",
+            "url": "localhost:5500/auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-05-02T08:59:58.578Z",
+            "modified": "2024-05-13T01:04:54.415Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"email\":  \"user@user.com\",\n  \"password\":\"123456\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGVOYW1lIjoiYWRtaW4iLCJpYXQiOjE3MDk5NDU3MTYsImV4cCI6MTcwOTk1MjkxNn0.D-srRsmLmBi2Eh0FOpDWAfVm0Eeu_5CHaaDkQFbYAuI\""
+            }
+        },
+        {
+            "_id": "d2feaf00-32f8-4b34-9d01-b8b88383cfc3",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "199acd1f-7764-4ef5-9f1b-ace742706548",
+            "name": "UPDATE MY TRIP BY TOKEN",
+            "url": "localhost:5500/trips",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-05-02T08:59:58.579Z",
+            "modified": "2024-05-13T01:05:08.956Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"tripDate\": \"2024-05-01 19:00:00\",\n  \"trip_id\": 23,\n  \"driverId\": 4,\n  \"startLocation\": \"Godella\",\n  \"destination\":\"Palau de Congresos\",\n  \"carId\":2\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAdXNlci5jb20iLCJ1c2VySWQiOjEsInJvbGVOYW1lIjoidXNlciIsInBheW1lbnQiOm51bGwsImlhdCI6MTcxNTU2MjI5NCwiZXhwIjoxNzE1NjM0Mjk0fQ.ZktIsq5EImZ-D2I3UkzqWNYHLkaYNGBTb_squ-Hw2tk"
+            }
+        },
+        {
+            "_id": "90bd6cb5-55f9-4f24-9063-bf9cf99a69a8",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "0cc53e14-e50e-4d08-a0c3-943cda7138df",
+            "name": "LOGIN DRIVER",
+            "url": "localhost:5500/auth/drivers/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-05-06T10:01:10.963Z",
+            "modified": "2024-05-06T21:34:40.456Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":  \"super@super.com\",\n  \"password\":\"123456\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "2557bea6-a8d6-4e0d-b9ed-6f93dc259e6c",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "e3675f96-1a24-4358-896e-b101ed2b35dd",
+            "name": "UPDATE USER PROFILE ",
+            "url": "http://localhost:5500/users/profile",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-05-13T01:43:54.218Z",
+            "modified": "2024-05-13T01:45:55.953Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"driverName\": \"Jeremy Mick Gomez Garcia\",\n  \"phone\": \"+34611111111\",\n  \"userMessage\": \"Estoy saliendoo\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAdXNlci5jb20iLCJ1c2VySWQiOjEsInJvbGVOYW1lIjoidXNlciIsInBheW1lbnQiOm51bGwsImlhdCI6MTcxNTU2MjI5NCwiZXhwIjoxNzE1NjM0Mjk0fQ.ZktIsq5EImZ-D2I3UkzqWNYHLkaYNGBTb_squ-Hw2tk"
+            }
+        },
+        {
+            "_id": "f9ea7ef4-1b5f-4ff1-b0b4-b728a2a6cf4c",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "fcd288b0-c88a-4708-ae01-894aae11aa38",
+            "name": "GET ALL USERS (super_admin  & pagination)",
+            "url": "http://localhost:5500/users",
+            "method": "GET",
+            "sortNum": 25000,
+            "created": "2024-05-02T08:59:58.582Z",
+            "modified": "2024-05-11T02:29:35.451Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"url_example_of_pagination\":\"http://localhost:5500/users?page=2\",\n \n \"url_example_of_pagination1\":\"http://localhost:5500/users?limit=20\",\n \n  \"url_example_of_pagination2\":\"http://localhost:5500/users?page=3&limit=15\"\n}\n\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IlN1cGVyIiwiZW1haWwiOiJzdXBlckBzdXBlci5jb20iLCJ1c2VySWQiOjEsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE3MTUzOTQzMDYsImV4cCI6MTcxNTQ2NjMwNn0.A8XigBEn4BqWov_Xd-pPqwupuRggmtTgoJDXliBZUK0"
+            }
+        },
+        {
+            "_id": "cda9ba15-970f-471b-b76c-1847c3880f4d",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "199acd1f-7764-4ef5-9f1b-ace742706548",
+            "name": "GET TRIP BY ID",
+            "url": "localhost:5500/trips/1",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-05-02T08:59:58.583Z",
+            "modified": "2024-05-09T16:06:33.994Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAdXNlci5jb20iLCJ1c2VySWQiOjIsInJvbGVOYW1lIjoidXNlciIsImlhdCI6MTcxNTI3MDc3NywiZXhwIjoxNzE1MzQyNzc3fQ.ByjpwIIdJ0cXr2vvfkINvdpAtatkbgTsuPoDBRfH_c0"
+            }
+        },
+        {
+            "_id": "ad53a74c-e290-4296-ad04-6497d0ca4908",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "fcd288b0-c88a-4708-ae01-894aae11aa38",
+            "name": "GET ALL DRIVERS (super_admin & pagination)",
+            "url": "http://localhost:5500/drivers",
+            "method": "GET",
+            "sortNum": 35000,
+            "created": "2024-05-06T14:14:50.091Z",
+            "modified": "2024-05-07T00:27:56.999Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"url_example_of_pagination\":\"http://localhost:5500/drivers?page=2\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXJOYW1lIjoiU3VwZXIiLCJlbWFpbCI6InN1cGVyQHN1cGVyLmNvbSIsImRyaXZlcklkIjoxLCJyb2xlTmFtZSI6InN1cGVyX2FkbWluIiwiaWF0IjoxNzE1MDQwMTQwLCJleHAiOjE3MTUwNDczNDB9.tHPzCIywOUSeqnOG0A3RUha-MzUuK655o5618NyjIps"
+            }
+        },
+        {
+            "_id": "7e4e5e58-7480-4f29-b2a2-1f4a5c454a5e",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "199acd1f-7764-4ef5-9f1b-ace742706548",
+            "name": "GET MY TRIPS with TOKEN",
+            "url": "localhost:5500/trips",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-05-02T08:59:58.586Z",
+            "modified": "2024-05-10T12:33:47.715Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAdXNlci5jb20iLCJ1c2VySWQiOjIsInJvbGVOYW1lIjoidXNlciIsImlhdCI6MTcxNTM0MTQ2OSwiZXhwIjoxNzE1NDEzNDY5fQ.AHEAN7xE9dOPOYASoQk5hTDZkTiMC1Tjd9Bp8Y9zXYU"
+            }
+        },
+        {
+            "_id": "53421e2c-bf2a-4217-881e-56adf9a350d8",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "199acd1f-7764-4ef5-9f1b-ace742706548",
+            "name": "GET ALL TRIPS  super_Admin ",
+            "url": "localhost:5500/trips/all",
+            "method": "GET",
+            "sortNum": 45000,
+            "created": "2024-05-02T08:59:58.588Z",
+            "modified": "2024-05-13T00:55:16.019Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IlN1cGVyIiwiZW1haWwiOiJzdXBlckBzdXBlci5jb20iLCJ1c2VySWQiOjMsInJvbGVOYW1lIjoic3VwZXJfYWRtaW4iLCJwYXltZW50IjoiY2FzaCIsImlhdCI6MTcxNTU2MTUyMCwiZXhwIjoxNzE1NjMzNTIwfQ.TTD_GHI4wTkkS-dxi9fQwCfe8D3AIuC33_Kr3FK7uqk"
+            }
+        },
+        {
+            "_id": "2aed6f63-0050-4e7c-bce3-04aba965037f",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "199acd1f-7764-4ef5-9f1b-ace742706548",
+            "name": "CREATE NEW TRIP",
+            "url": "http://localhost:5500/trips/",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-05-02T08:59:58.589Z",
+            "modified": "2024-05-10T13:22:46.088Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"startLocation\": \"[39.5101955, -0.4115733]\",\n   \"destination\": \"Valencia, Spain\",\n   \"driverId\": 3\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXJAdXNlci5jb20iLCJ1c2VySWQiOjIsInJvbGVOYW1lIjoidXNlciIsImlhdCI6MTcxNTM0MTQ2OSwiZXhwIjoxNzE1NDEzNDY5fQ.AHEAN7xE9dOPOYASoQk5hTDZkTiMC1Tjd9Bp8Y9zXYU"
+            }
+        },
+        {
+            "_id": "173b0bd6-17bf-4b5e-86c3-e5e96a8fb05b",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "0eacc5d0-99d7-4c56-9b3d-0b0640286e73",
+            "name": "UPDATE DRIVER PROFILE ",
+            "url": "http://localhost:5500/drivers/profile",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2024-05-06T10:49:45.027Z",
+            "modified": "2024-05-06T14:09:03.378Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"driverName\": \"Jeremy Mick Gomez Garcia\",\n  \"phone\":\"+34611111111\",\n  \"driverMessage\": \"Estoy en la puerta ahora mismo\",\n  \"score\":5\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXJOYW1lIjoiSmVyZW1pYXMgTWF0ZW8iLCJlbWFpbCI6ImplcmVtaWFzTWF0QHN1cGVyLmNvbSIsImRyaXZlcklkIjo4LCJyb2xlTmFtZSI6InVzZXIiLCJpYXQiOjE3MTUwMDMyMzMsImV4cCI6MTcxNTAxMDQzM30.sEReuQDmPI0p_5jfcv_jZircOKqj8k4hXkt46ZtkmkU"
+            }
+        },
+        {
+            "_id": "6e42f820-c490-4f43-b87c-22b98c6dee21",
+            "colId": "b49d7983-7b15-49bb-bd83-8203b95d96d8",
+            "containerId": "0eacc5d0-99d7-4c56-9b3d-0b0640286e73",
+            "name": "GET DRIVER PROFILE",
+            "url": "http://localhost:5500/drivers/profile",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-05-06T10:49:45.026Z",
+            "modified": "2024-05-06T11:57:42.030Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXJOYW1lIjoiSmVyZW1pYXMgTWF0ZW8iLCJlbWFpbCI6ImplcmVtaWFzTWF0QHN1cGVyLmNvbSIsImRyaXZlcklkIjo4LCJyb2xlTmFtZSI6InVzZXIiLCJpYXQiOjE3MTQ5OTUwMTIsImV4cCI6MTcxNTAwMjIxMn0.FEeNBC1bc4pNKaqouDBCqyIvg9tU7FjKy1uDWs7YS7g"
+            }
+        }
+    ],
+    "ref": "Z_hK4ILUzuIqhgRQ6-9cO_GWttimdnfG49QWclwdd8p7i56kuI3kcmOYVerbSFwpB_8oRE6iDPkl6_7M-UVllA"
+}

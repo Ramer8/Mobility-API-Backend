@@ -74,6 +74,9 @@ const userSeedDatabase = async () => {
       "$2b$08$Rj.Etm9wcVccDkV6jM8kM.fUFNgDDHO0fHCNWcKuGWcA4lZpXPsMO" // 123456
     superadmin.role = new Role()
     superadmin.role.id = 3
+    let randomNumber = Math.random()
+    superadmin.payment = randomNumber < 0.5 ? "debit" : "credit"
+
     superadmin.save()
 
     const user = new User()
@@ -83,6 +86,8 @@ const userSeedDatabase = async () => {
       "$2b$08$Rj.Etm9wcVccDkV6jM8kM.fUFNgDDHO0fHCNWcKuGWcA4lZpXPsMO" // 123456
     user.role = new Role()
     user.role.id = 1
+    randomNumber = Math.random()
+    user.payment = randomNumber < 0.5 ? "debit" : "credit"
     user.save()
 
     const fakeUsers = Array.from({ length: num_users - 2 }, generateFakeUsers)

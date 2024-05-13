@@ -1,6 +1,6 @@
-### Appointment Manager Backend
+### Mobility App Backend
 
-###### Tattoo Shop
+###### Mobility App
 
 <div style="display: flex; justify-content: space-around;">
 <center><img style="border-radius:15px; padding:1px; width:100%;"  src="./src/img/demoMovil.png"></center>
@@ -77,10 +77,10 @@ They can also access their trip history.
 
 <li> Create a Data Base</li>
 <li> Migrations & Seeders for all tables.
-<li>Create a Endpoints</li>
+<li> Endpoints</li>
 
 <details>
-  <summary style="padding-left:15px; color:darkgray"> </summary>
+  <summary style="padding-left:15px; color:darkgray"> View endopints</summary>
 <ol>
 
 ---
@@ -89,7 +89,7 @@ They can also access their trip history.
 
 ---
 
-<li > Register</li>
+<li > Register Users</li>
 
 POST `localhost:5500/auth/register`
 
@@ -99,39 +99,107 @@ POST `https://localhost:5500/auth/login`
 
 ---
 
+<li > Register Drivers</li>
+
+POST `localhost:5500/auth/drivers/register`
+
+<li> Login</li>
+
+POST `localhost:5500/auth/drivers/login`
+
+---
+
 <ol style="color:green;font-weight:bolder"> Users</ol>
 
 ---
 
-<li> Get All Users ></li>
+<li> Get All Users with pagination </li>
 
-GET `http://localhost:4500/api/users`
+GET `http://localhost:5500/users`
 
-<img src="./src/img/getAllUsers.png"/>
+---
+
+<li> Pagination example </li>
+
+` "url_example_of_pagination":"http://localhost:5500/users?page=2",`
+
+` "url_example_of_pagination1":"http://localhost:5500/users?limit=20",`
+
+`  "url_example_of_pagination2":"http://localhost:5500/users?page=3&limit=15"`
+
+---
 
 <li> Get User Profile</li>
 
-GET `http://localhost:4500/api/users/profile`
+GET `http://localhost:5500/users/profile`
 
-<img src="./src/img/getProfile.png"/>
+---
 
-<li> Create Service </li>
+<li> Update User Profile</li>
 
-POST `http://localhost:4500/api/services`
+PUT `http://localhost:5500/users/profile`
 
-<img src="./src/img/createNewService.png"/>
+---
+
+<li> Delete User by Id</li>
+
+DELETE `http://localhost:5500/users/:id`
+
+---
+
+<li> Delete User more than one User </li>
+
+DELETE `http://localhost:5500/users/`
+
+---
+
+<li> Get Users with search by query </li>
+
+GET `http://localhost:5500/users/search?search=email`
+
+GET `http://localhost:5500/users/search?search=name`
+
+---
+
+<li> Create Trip </li>
+
+POST `http://localhost:5500/trips/`
+
+{
+"startLocation": "[39.5102451,-0.4115579]",
+"destination": "Valencia, Spain",
+"driverId": 3
+}
+
+<li> Get all Trips (Super_admin) </li>
+
+GET `http://localhost:5500/trips/all`
+
+---
+
+<li> Get my Current Trip (TOKEN) </li>
+
+GET `http://localhost:5500/trips/current`
+
+---
+
+<li> Get all my Trips (TOKEN) </li>
+
+PUT `http://localhost:5500/trips/:id`
+
+---
+
+<li> Get trips by Id (TOKEN) </li>
+
+GET `http://localhost:5500/trips`
+
+---
 
 <li> Update Profile Data</li>
 
 PUT `http://localhost:4500/api/users/profile`
 
 <img src="./src/img/updateProfile.png"/>
-
-<li> Delete User by Id</li>
-
-DELETE `http:localhost:4500/api/users/6`
-
-<img src="./src/img/DeleteUserbyId.png"/>
 
 <li> Update Role </li>
 

@@ -6,7 +6,7 @@
 
 <div style="display: flex; justify-content: space-around; flex-direction:row;">
 <center><img style="border-radius:15px; padding:1px; width:30%;"  src="./src/img/demoMovil.png"></center>
-<center><img style="border-radius:15px; padding:1px; width:100%;"  src="./src/img/demo.png"></center>
+<center><img style="border-radius:15px; padding:1px; width:40%;"  src="./src/img/demo.png"></center>
 </div>
 
 ---

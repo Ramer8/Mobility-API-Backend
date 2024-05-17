@@ -41,6 +41,7 @@ export class Users1714393281890 implements MigrationInterface {
             name: "payment",
             type: "varchar",
             length: "255",
+            default: "'cash'",
             isNullable: true,
           },
           {

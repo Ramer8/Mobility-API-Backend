@@ -30,6 +30,9 @@ export class Trip extends BaseEntity {
   @Column({ name: "destination" })
   destination!: string
 
+  @Column({ name: "pay" })
+  pay!: boolean
+
   @Column({ name: "trip_date" })
   tripDate!: Date
 

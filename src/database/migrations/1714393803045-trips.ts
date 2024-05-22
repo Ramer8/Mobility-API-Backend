@@ -43,6 +43,12 @@ export class Trips1714393803045 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: "pay",
+            type: "boolean",
+            isNullable: true,
+            default: false,
+          },
+          {
             name: "trip_date",
             type: "timestamp",
             default: "CURRENT_TIMESTAMP",

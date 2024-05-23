@@ -44,9 +44,9 @@ export class Trips1714393803045 implements MigrationInterface {
           },
           {
             name: "pay",
-            type: "boolean",
+            type: "varchar",
+            length: "40",
             isNullable: true,
-            default: false,
           },
           {
             name: "trip_date",

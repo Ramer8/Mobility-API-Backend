@@ -64,6 +64,7 @@ export const showMyTripsWithToken = async (req: Request, res: Response) => {
       select: {
         tripDate: true,
         id: true,
+        pay: true,
         driver: {
           driverName: true,
           carId: true,
@@ -96,6 +97,8 @@ export const showMyTripsWithToken = async (req: Request, res: Response) => {
 export const recoverTripWithId = async (req: Request, res: Response) => {
   try {
     const tripId = req.params.id
+
+    console.log(tripId, "gfdgfdshdfshgs")
 
     const { userId } = req.tokenData
 
@@ -291,13 +294,18 @@ export const updateMyTripWithToken = async (req: Request, res: Response) => {
       driverId,
       tripStartDate,
       tripFinishDate,
+      pay,
       carId,
     } = req.body
+
+    console.log(req.body, "q muestra..?")
+    console.log(pay, "a ver")
+
     const userId = req.tokenData.userId
     const trip = await Trip.find({
       where: {
         userId: userId,
-        id: parseInt(trip_id), // busca la cita a actualizar le paso id q quiero actualizar
+        id: parseInt(trip_id), // busca el viaje a actualizar le paso id q quiero actualizar
       },
       relations: {
         driver: true,
@@ -322,7 +330,8 @@ export const updateMyTripWithToken = async (req: Request, res: Response) => {
         // },
       },
     })
-    console.log(trip)
+    console.log(trip, "el antes del cambio..")
+
     if (!trip.length) {
       return res.status(404).json({
         success: false,
@@ -343,6 +352,7 @@ export const updateMyTripWithToken = async (req: Request, res: Response) => {
         tripStartDate: tripStartDate,
         tripFinishDate: tripFinishDate,
         carId: carId,
+        pay: pay,
       }
     )
     if (!tripToUpdate.affected) {
@@ -352,7 +362,9 @@ export const updateMyTripWithToken = async (req: Request, res: Response) => {
         error: Error,
       })
     }
-    console.log(tripToUpdate, "lo que cambio")
+
+    console.log(tripToUpdate, "lo que cambio aqui....")
+
     res.status(200).json({
       success: true,
       message: "trip updated successfuly",

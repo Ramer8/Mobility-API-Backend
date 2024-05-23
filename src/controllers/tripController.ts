@@ -24,7 +24,7 @@ export const createTripWithToken = async (req: Request, res: Response) => {
       driverId: driverId,
       carId: dataDriver[0].carId,
     }).save()
-    res.status(201).json({
+    res.status(200).json({
       success: true,
       message: "Trip created successfuly",
       data: newtrip,
@@ -97,8 +97,6 @@ export const showMyTripsWithToken = async (req: Request, res: Response) => {
 export const recoverTripWithId = async (req: Request, res: Response) => {
   try {
     const tripId = req.params.id
-
-    console.log(tripId, "gfdgfdshdfshgs")
 
     const { userId } = req.tokenData
 
@@ -298,9 +296,6 @@ export const updateMyTripWithToken = async (req: Request, res: Response) => {
       carId,
     } = req.body
 
-    console.log(req.body, "q muestra..?")
-    console.log(pay, "a ver")
-
     const userId = req.tokenData.userId
     const trip = await Trip.find({
       where: {
@@ -330,7 +325,6 @@ export const updateMyTripWithToken = async (req: Request, res: Response) => {
         // },
       },
     })
-    console.log(trip, "el antes del cambio..")
 
     if (!trip.length) {
       return res.status(404).json({
@@ -362,8 +356,6 @@ export const updateMyTripWithToken = async (req: Request, res: Response) => {
         error: Error,
       })
     }
-
-    console.log(tripToUpdate, "lo que cambio aqui....")
 
     res.status(200).json({
       success: true,
